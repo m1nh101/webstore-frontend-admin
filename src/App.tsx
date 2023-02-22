@@ -1,5 +1,7 @@
+import Main from "./layout/Main";
+
 const App = (): JSX.Element => {
-  return <></>
+  return <Main />
 }
 
 export default App;
