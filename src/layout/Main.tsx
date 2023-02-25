@@ -2,6 +2,8 @@ import { Layout } from "antd";
 import { Content, Footer, Header } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
 import { useState } from "react";
+import { Outlet } from "react-router-dom";
+import HeaderNavigationBar from "./HeaderNavigationBar";
 import styles from './layout.module.scss'
 import SidebarMenu from "./SidebarMenu";
 
@@ -19,10 +21,13 @@ const Main: React.FC = () => {
         <SidebarMenu />
       </Sider>
       <Layout>
-        <Header></Header>
-        <Content></Content>
+        <Header>
+          <HeaderNavigationBar />
+        </Header>
+        <Content>
+          <Outlet />
+        </Content>
         <Footer>
-          
         </Footer>
       </Layout>
     </Layout>

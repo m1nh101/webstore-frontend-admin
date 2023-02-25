@@ -1,31 +1,14 @@
 import { faChartLine, faCodeBranch, faLayerGroup, faNewspaper, faStore, faTag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Menu, MenuProps, MenuTheme } from "antd"
+import { Menu, MenuTheme } from "antd"
 import { MenuMode } from "rc-menu/lib/interface"
-import { v4 as guid } from 'uuid'
-
-type MenuItem = Required<MenuProps>['items'][number];
+import { getMenuItem, MenuItem } from "../common/menu";
 
 type SidebarMenuProp = {
   mode: MenuMode
   defaultSelectedKeys: Array<string>,
   items: Array<MenuItem>,
   theme: MenuTheme
-}
-
-const getMenuItem = (
-  label: React.ReactNode | string,
-  icon?: React.ReactNode,
-  children?: Array<MenuItem>,
-  type?: 'group',
-): MenuItem => {
-  return {
-    key: guid(),
-    icon,
-    children,
-    label,
-    type
-  } as MenuItem;
 }
 
 const menuItems = [
