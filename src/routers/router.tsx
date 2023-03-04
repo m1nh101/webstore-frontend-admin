@@ -1,6 +1,6 @@
 import { Route } from "antd/es/breadcrumb/Breadcrumb";
 import { createBrowserRouter, LoaderFunction, RouteObject } from "react-router-dom";
-import App from "../App";
+import Main from "../layout/Main";
 import Login from "../pages/Login";
 import ProtectedRoute from "./ProtectedRoute";
 
@@ -19,7 +19,7 @@ const getRoute = (
 }
 
 const mainRoutes: Array<RouteObject> = [
-  getRoute('/', <ProtectedRoute children={<App />} />),
+  getRoute('/', <ProtectedRoute children={<Main />} />),
   getRoute('/login', <Login />)
 ]
 

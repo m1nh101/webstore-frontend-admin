@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import makeRequest from "../api/apiFactory";
+import makeRequest, { APIResponse } from "../api/apiFactory";
 
 const useFetch = <TDataResponse>(url: string): TDataResponse => {
   const [data, setData] = useState<TDataResponse>();
@@ -7,9 +7,9 @@ const useFetch = <TDataResponse>(url: string): TDataResponse => {
 
   useEffect(() => {
       const fetch = async (): Promise<void> => {
-        const response = await makeRequest<TDataResponse>({url, method})
+        const response = await makeRequest<TDataResponse>({url, method}) as APIResponse<TDataResponse>
 
-        if(response.httpStatusCode == 200){
+        if(response.statusCode == 200){
           setData(response.data)
         }
       };
