@@ -2,6 +2,7 @@ import { faChartLine, faCodeBranch, faLayerGroup, faNewspaper, faStore, faTag } 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Menu, MenuTheme } from "antd"
 import { MenuMode } from "rc-menu/lib/interface"
+import { Link } from "react-router-dom";
 import { getMenuItem, MenuItem } from "../common/menu";
 
 type SidebarMenuProp = {
@@ -12,13 +13,13 @@ type SidebarMenuProp = {
 }
 
 const menuItems = [
-  getMenuItem('Dashboard', <FontAwesomeIcon icon={faChartLine} />),
-  getMenuItem('Sản phẩm', <FontAwesomeIcon icon={faLayerGroup} />, [
-    getMenuItem('Thương hiệu', <FontAwesomeIcon icon={faCodeBranch}/>),
-    getMenuItem('Sản phẩm', <FontAwesomeIcon icon={faStore}/>),
+  getMenuItem(<Link to='dashboard'>Dashboard</Link>, <FontAwesomeIcon icon={faChartLine} />),
+  getMenuItem(<Link to='products'>Sản phẩm</Link>, <FontAwesomeIcon icon={faLayerGroup} />, [
+    getMenuItem(<Link to='variants'>Thương hiệu</Link>, <FontAwesomeIcon icon={faCodeBranch}/>),
+    getMenuItem(<Link to='products'>Sản phẩm</Link>, <FontAwesomeIcon icon={faStore}/>),
   ]),
-  getMenuItem('Khuyễn mãi', <FontAwesomeIcon icon={faTag}/>),
-  getMenuItem('Đơn hàng', <FontAwesomeIcon icon={faNewspaper}/>),
+  getMenuItem(<Link to='sales'>Khuyễn mãi</Link>, <FontAwesomeIcon icon={faTag}/>),
+  getMenuItem(<Link to='orders'>Đơn hàng</Link>, <FontAwesomeIcon icon={faNewspaper}/>),
 ]
 
 const sidebarMenuProp: SidebarMenuProp = {
