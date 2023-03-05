@@ -26,7 +26,7 @@ const App = (): JSX.Element => {
       } catch {
         dispatch({
           type: 'VERIFY_TOKEN_FAILED',
-          payload: 'SignOut'
+          payload: 'NotVerified'
         });
       }
 
@@ -38,7 +38,7 @@ const App = (): JSX.Element => {
 
   return (
     <UserContext.Provider value={{ state, dispatch }} >
-      <RouterProvider router={router} />
+      <RouterProvider router={router}/>
     </UserContext.Provider>
   );
 }

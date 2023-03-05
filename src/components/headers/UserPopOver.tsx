@@ -1,16 +1,17 @@
 import { faUserNinja } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { Avatar, Popover, Space } from "antd"
+import { Avatar, Button, Popover, Space } from "antd"
 import { RenderFunction } from "antd/es/tooltip"
-import { Link } from "react-router-dom"
 import useAuth from "../../hooks/useAuth"
 
 const UserOptions: RenderFunction = () => {
   const { logout } = useAuth();
 
+  const onSignOutClick = (): void => logout();
+
   return (
     <Space direction="vertical">
-      <Link to="/login" onClick={logout}>Đăng xuất</Link>
+      <Button onClick={onSignOutClick}>Đăng xuất</Button>
     </Space>
   )
 }

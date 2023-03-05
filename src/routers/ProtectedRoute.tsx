@@ -1,19 +1,17 @@
 import React from "react"
 import { Navigate } from "react-router-dom"
 import useAuth from "../hooks/useAuth"
+import Main from "../layout/Main"
 
-type ProtectedRouteProps = {
-  children: JSX.Element
-}
-
-const ProtectedRoute: React.FC<ProtectedRouteProps> = ({children}) => {
+const ProtectedRoute: React.FC = () => {
 
   const { state } = useAuth();
 
-  if(state.status === 'VerifyingToken')
+  if(state.status === 'NotVerified')
     return <>...Loading</>
 
-  return state.session === 'Authenticated' ? children : <Navigate replace to="/login"/>
+  return state.session === 'Authenticated'
+    ? <Main /> : <Navigate to="/login" />
 }
 
 export default ProtectedRoute;

@@ -1,5 +1,5 @@
 import { Button, Form, Input } from "antd";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserCredential } from "../common/type";
 import useAuth from "../hooks/useAuth";
@@ -15,6 +15,8 @@ const centerForm: string = `${styles.fit_to_screen} ${styles.center_item} ${styl
 const Login: React.FC = () => {
   const [credential, setCredential] = useState<UserCredential>(defaultCredential);
 
+  const [verify, setVerify] = useState<boolean>(false);
+
   const { auth } = useAuth();
 
   const navigate = useNavigate();
@@ -23,13 +25,11 @@ const Login: React.FC = () => {
     setCredential({ ...credential, [event.target.name]: event.target.value })
   };
 
-  const onClickHandle = async (): Promise<void> => {
-    const response = await auth(credential);
+  useEffect(() => {
+    if(verify) navigate('/');
+  }, [verify, navigate])
 
-    if(response) {
-      navigate('/');
-    }
-  };
+  const onClickHandle = async (): Promise<any> => await auth(credential).then(res => setVerify(res));
 
   return (
     <div className={centerForm}>

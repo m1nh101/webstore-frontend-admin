@@ -19,7 +19,7 @@ const getRoute = (
 }
 
 const mainRoutes: Array<RouteObject> = [
-  getRoute('/', <ProtectedRoute children={<Main />} />),
+  getRoute('/', <ProtectedRoute />),
   getRoute('/login', <Login />)
 ]
 

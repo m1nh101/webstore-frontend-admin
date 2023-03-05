@@ -1,6 +1,6 @@
 export type SessionFlag = "Authenticated" | "Unauthenticated";
 
-export type AuthStatus = "VerifyingToken" | "VerifyingCredential" | "SignOut" 
+export type AuthType = "VerifyingToken" | "VerifyingCredential" | "SignOut" | "NotVerified"
 
 export type UserCredential = {
   username: string,

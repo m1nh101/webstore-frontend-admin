@@ -1,7 +1,7 @@
 import { createContext, Dispatch } from "react";
-import { ActionPayload, AuthStatus, SessionFlag, UserSession } from "../common/type";
+import { ActionPayload, AuthType, SessionFlag, UserSession } from "../common/type";
 
-type UserPayload = UserSession | SessionFlag | AuthStatus;
+type UserPayload = UserSession | SessionFlag | AuthType;
 
 export type UserContextState = typeof defaultUserContextState
 
@@ -17,7 +17,7 @@ export const defaultUserContextState = {
     avatar: '',
   } as UserSession,
   session: 'Unauthenticated' as SessionFlag,
-  status: 'VerifyingToken' as AuthStatus
+  status: 'NotVerified' as AuthType
 }
 
 const initialContextValue: UserContextProp = {
@@ -44,14 +44,14 @@ export const userReducer = (state: UserContextState, action: ActionPayload<UserP
         ...state,
         user: action.payload,
         session: 'Authenticated',
-        status: 'VerifyingCredential'
+        status: 'VerifyingToken'
       } as UserContextState
 
     case 'VERIFY_TOKEN_FAILED':
       return {
         ...state,
         session: 'Unauthenticated',
-        status: 'VerifyingCredential'
+        status: 'VerifyingToken'
       } as UserContextState
 
     case 'SIGN_OUT':

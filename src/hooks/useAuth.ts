@@ -38,7 +38,7 @@ const useAuth = (): AuthHook => {
         type: 'AUTHENTICATE_SUCCESS',
         payload: response.data!
       });
-  
+
       return true;
     }
 
