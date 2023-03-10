@@ -24,7 +24,7 @@ const Main: React.FC = () => {
         <Header>
           <HeaderNavigationBar />
         </Header>
-        <Content style={{padding: '24px'}}>
+        <Content style={{padding: '24px', background: '#001516'}}>
           <Outlet />
         </Content>
         <Footer>

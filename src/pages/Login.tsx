@@ -29,7 +29,9 @@ const Login: React.FC = () => {
     if(verify) navigate('/');
   }, [verify, navigate])
 
-  const onClickHandle = async (): Promise<any> => await auth(credential).then(res => setVerify(res));
+  const onClickHandle = async (): Promise<any> => await auth(credential).then(res => {
+    if(res === 'Completed') setVerify(true);
+  });
 
   return (
     <div className={centerForm}>
